@@ -15,6 +15,41 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <%= link_to 'odin-facebook', root_path, class: 'navbar-item' %>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <% if user_signed_in? %>
+            <a class="navbar-item">
+            Notifications
+            </a>
+            <a class="navbar-item">
+              My Profile
+            </a>
+            <div class="navbar-item">
+              <%= link_to 'Sign Out', destroy_user_session_path, class: 'button is-small' %>
+            </div>
+          <% else %>
+            <div class="navbar-item">
+              <div class="buttons">
+                <%= link_to 'Sign Up', new_user_registration_path, class: 'button is-small' %>
+                <%= link_to 'Log In', new_user_session_path, class: 'button is-small is-primary' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
