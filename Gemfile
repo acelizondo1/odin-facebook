@@ -41,6 +41,7 @@ end
 
 group :development do
   gem 'guard-rspec', '4.6.0'
+  gem "faker", "~> 2.19"
   gem "letter_opener"
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'

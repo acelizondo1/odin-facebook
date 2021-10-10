@@ -90,6 +90,8 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
     erubi (1.10.0)
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.4)
     formatador (0.3.0)
     globalid (0.5.2)
@@ -275,6 +277,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise (~> 4.8)
+  faker (~> 2.19)
   guard-rspec (= 4.6.0)
   jbuilder (~> 2.7)
   letter_opener
