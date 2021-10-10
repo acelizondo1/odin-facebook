@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem "devise", "~> 4.8"
 
 gem "bulma-rails", "~> 0.9.1"
-
+gem 'font-awesome-sass', '~> 5.15.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

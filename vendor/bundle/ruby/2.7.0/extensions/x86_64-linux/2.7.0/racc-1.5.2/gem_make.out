@@ -1,5 +1,5 @@
 current directory: /mnt/c/Users/aceli/Documents/Code/Odin/odin-facebook/vendor/bundle/ruby/2.7.0/gems/racc-1.5.2/ext/racc/cparse
-/home/acelizondo/.rbenv/versions/2.7.2/bin/ruby -I /home/acelizondo/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20211009-13544-1vm8pc1.rb extconf.rb
+/home/acelizondo/.rbenv/versions/2.7.2/bin/ruby -I /home/acelizondo/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20211010-29058-g5xgi.rb extconf.rb
 checking for rb_ary_subseq()... yes
 creating Makefile
 
@@ -13,6 +13,6 @@ linking shared-object racc/cparse.so
 
 current directory: /mnt/c/Users/aceli/Documents/Code/Odin/odin-facebook/vendor/bundle/ruby/2.7.0/gems/racc-1.5.2/ext/racc/cparse
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 cparse.so ./.gem.20211009-13544-12duzk2/racc
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20211010-29058-1mg5uq5/racc
 
-Permission denied @ rb_file_s_rename - (./.gem.20211009-13544-12duzk2/racc, /mnt/c/Users/aceli/Documents/Code/Odin/odin-facebook/vendor/bundle/ruby/2.7.0/extensions/x86_64-linux/2.7.0/racc-1.5.2/racc)
+Permission denied @ rb_file_s_rename - (./.gem.20211010-29058-1mg5uq5/racc, /mnt/c/Users/aceli/Documents/Code/Odin/odin-facebook/vendor/bundle/ruby/2.7.0/extensions/x86_64-linux/2.7.0/racc-1.5.2/racc)

@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="has-navbar-fixed-top">
     <div id="alerts">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
 
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-info is-fixed-top" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <%= link_to 'odin-facebook', root_path, class: 'navbar-item' %>
 
@@ -30,20 +29,65 @@
       <div class="navbar-menu">
         <div class="navbar-end">
           <% if user_signed_in? %>
-            <a class="navbar-item">
-            Notifications
-            </a>
-            <a class="navbar-item">
-              My Profile
-            </a>
+            <%= link_to user_path(current_user.id), class: 'navbar-item' do %>
+              <div class="field is-grouped">
+                <p class="control">
+                  <span>Notifications</span>
+                  <span class="icon">
+                    <%= icon('fas', 'bell') %>
+                  </span>
+                </p>
+              </div>
+            <% end %>
+            <%= link_to user_path(current_user.id), class: 'navbar-item' do %>
+              <div class="field is-grouped">
+                <p class="control">
+                  <span>My Profile</span>
+                  <span class="icon">
+                    <%= icon('fas', 'user-circle') %>
+                  </span>
+                </p>
+              </div>
+            <% end %>
             <div class="navbar-item">
-              <%= link_to 'Sign Out', destroy_user_session_path, class: 'button is-small' %>
+              <div class="field is-grouped">
+                <p class="control">
+                  <%= link_to destroy_user_session_path, method: :delete, class: 'button is-small' do %>
+                    <span>Sign Out</span>
+                    <span class="icon">
+                      <%= icon('fas', 'sign-out-alt') %>
+                    </span>
+                  <% end %>
+                </p>
+              </div>
             </div>
           <% else %>
             <div class="navbar-item">
               <div class="buttons">
-                <%= link_to 'Sign Up', new_user_registration_path, class: 'button is-small' %>
-                <%= link_to 'Log In', new_user_session_path, class: 'button is-small is-primary' %>
+                <div class="navbar-item">
+                  <div class="field is-grouped">
+                    <p class="control">
+                      <%= link_to new_user_registration_path, class: 'button is-small' do %>
+                        <span>Sign Up</span>
+                        <span class="icon">
+                          <%= icon('fas', 'users') %>
+                        </span>
+                      <% end %>
+                    </p>
+                  </div>
+                </div>
+                <div class="navbar-item">
+                  <div class="field is-grouped">
+                    <p class="control">
+                      <%= link_to new_user_session_path, class: 'button is-small is-primary' do %>
+                        <span>Log In</span>
+                        <span class="icon">
+                          <%= icon('fas', 'sign-in-alt') %>
+                        </span>
+                      <% end %>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           <% end %>
