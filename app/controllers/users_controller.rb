@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
     private
     def current_user?
-        unless params[:id] == current_user.id
+        unless params[:id].to_i == current_user.id
             flash[:alert] = "You can only access your own profile page"
             redirect_to root_path
         end
