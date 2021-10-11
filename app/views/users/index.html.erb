@@ -1,4 +1,32 @@
-<h1>Users</h1>
-<% @users.each do |user| %>
-    <p><%= user.name %></p>
-<% end %>
+<div class="column is-6 is-offset-1">
+    <div class="columns is-flex-wrap-wrap">
+        <% @users.each do |user| %>
+            <div class="column is-4 block ">
+                <p><%= user.name %></p>
+                <div class="field is-grouped">
+                    <p class="control">
+                        <% friendship = Friendship.locate_friendship(current_user.id, user.id) %>
+                        <% if friendship.empty? %>
+                            <%= link_to friendships_path(user_id: current_user.id, friend_id: user.id), method: :post, class: 'button is-small' do %>
+                                <span>Add Friend</span>
+                                <span class="icon">
+                                    <%= icon('fas', 'user-plus') %>
+                                </span>
+                            <% end %>
+                        <% else %>
+                            <%= link_to friendship_path(friendship[0].id), method: :delete, class: 'button is-small' do %>
+                                <span>Unfriend</span>
+                                <span class="icon">
+                                    <%= icon('fas', 'user-minus') %>
+                                </span>
+                            <% end %>
+                        <% end %>
+                    </p>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+<div class="column is-2 is-offset-1">
+
+</div>

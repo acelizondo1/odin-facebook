@@ -14,7 +14,7 @@ class FriendshipsController < ApplicationController
     end
 
     def destroy 
-        friendship = Friendship.locate_friendship(params[user_id], params[friend_id])
+        friendship = Friendship.find(params[:id])
         respond_to do |format|
             if friendship.destroy
                 format.html{redirect_back(fallback_location: root_path)}
