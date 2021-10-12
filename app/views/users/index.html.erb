@@ -5,17 +5,17 @@
                 <p><%= user.name %></p>
                 <div class="field is-grouped">
                     <p class="control">
-                        <% friendship = Friendship.locate_friendship(current_user.id, user.id) %>
-                        <% if friendship.empty? %>
-                            <%= link_to friendships_path(user_id: current_user.id, friend_id: user.id), method: :post, class: 'button is-small' do %>
+                        <% friend_request = FriendRequest.locate_request(current_user.id, user.id) %>
+                        <% if friend_request.empty? %>
+                            <%= link_to friend_requests_path(user_id: current_user.id, friend_id: user.id), method: :post, class: 'button is-small' do %>
                                 <span>Add Friend</span>
                                 <span class="icon">
                                     <%= icon('fas', 'user-plus') %>
                                 </span>
                             <% end %>
                         <% else %>
-                            <%= link_to friendship_path(friendship[0].id), method: :delete, class: 'button is-small' do %>
-                                <span>Unfriend</span>
+                            <%= link_to friend_request_path(friend_request[0].id), method: :delete, class: 'button is-small' do %>
+                                <span>Delete Request</span>
                                 <span class="icon">
                                     <%= icon('fas', 'user-minus') %>
                                 </span>
