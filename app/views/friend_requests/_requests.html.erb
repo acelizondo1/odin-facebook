@@ -1,27 +1,34 @@
 <div class="columns is-flex-wrap-wrap">
     <% requests.each do |request| %>
         <% requestor = User.find(request.user.id) %>
-        <div class="column is-6 block">
-            <div class="columns">
-                <div class="column is-8">
-                    <h6 class="is-size-6"><%= requestor.name %>
+        <div class="column is-6 ">
+            <div class="media columns">
+                <div class="column is-12">
+                    <div class="media-center">
+                        <figure class="is-48x48">
+                            <%= image_tag 'https://bulma.io/images/placeholders/96x96.png', alt: 'Placeholder Image' %>
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <h6 class="is-size-6"><%= requestor.name %>
+                    </div>
                 </div>
-                <div class="is-4 is-align-self-center">
-                    <% if view == 'incoming' %>                
-                        <%= link_to friend_request_path(request), method: :put, class: 'button is-small mb-1' do %>
-                            <span>Accept</span>
-                            <span class="icon">
-                                <%= icon('fas', 'plus') %>
-                            </span>
-                        <% end %>
-                    <% end %>
-                    <%= link_to friend_request_path(request), method: :delete, class: 'button is-small' do %>
-                        <span><%= button_message %></span>
+            </div>
+            <div class="buttons column is-12 has-text-centered">
+                <% if view == 'incoming' %>                
+                    <%= link_to friend_request_path(request), method: :put, class: 'button is-small mb-1' do %>
+                        <span>Accept</span>
                         <span class="icon">
-                            <%= icon('fas', 'minus') %>
+                            <%= icon('fas', 'plus') %>
                         </span>
                     <% end %>
-                </div>
+                <% end %>
+                <%= link_to friend_request_path(request), method: :delete, class: 'button is-small' do %>
+                    <span><%= button_message %></span>
+                    <span class="icon">
+                        <%= icon('fas', 'minus') %>
+                    </span>
+                <% end %>
             </div>
         </div>
     <% end %>
