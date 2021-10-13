@@ -95,12 +95,9 @@
       </div>
     </nav>
 
-    <div class="columns mt-6">
+    <div class="columns mt-6" id="side-nav">
       <div class="column is-2 ml-6">
         <aside class="menu box">
-          <p class="menu-label">
-            General
-          </p>
           <ul class="menu-list">
             <li><%= link_to 'Home', root_path %></li>
             <li><%= link_to 'New Post', root_path %></li>
@@ -109,7 +106,7 @@
             Friends
           </p>
           <ul class="menu-list">
-            <li><%= link_to 'My Friends', root_path %></li>
+            <li><%= link_to 'My Friends', friendships_path %></li>
             <li><%= link_to 'Friend Requests', friend_requests_path %></li>
             <li><%= link_to 'Search For Friends', users_path %></li>
           </ul>

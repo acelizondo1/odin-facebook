@@ -1,0 +1,2 @@
+module FriendRequstsHelper
+end

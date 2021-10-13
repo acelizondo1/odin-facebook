@@ -1,0 +1,28 @@
+<div class="columns is-flex-wrap-wrap">
+    <% requests.each do |request| %>
+        <% requestor = User.find(request.user.id) %>
+        <div class="column is-6 block">
+            <div class="columns">
+                <div class="column is-8">
+                    <h6 class="is-size-6"><%= requestor.name %>
+                </div>
+                <div class="is-4 is-align-self-center">
+                    <% if view == 'incoming' %>                
+                        <%= link_to friend_request_path(request), method: :put, class: 'button is-small mb-1' do %>
+                            <span>Accept</span>
+                            <span class="icon">
+                                <%= icon('fas', 'plus') %>
+                            </span>
+                        <% end %>
+                    <% end %>
+                    <%= link_to friend_request_path(request), method: :delete, class: 'button is-small' do %>
+                        <span><%= button_message %></span>
+                        <span class="icon">
+                            <%= icon('fas', 'minus') %>
+                        </span>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
