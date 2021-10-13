@@ -6,6 +6,10 @@ class Friendship < ApplicationRecord
     belongs_to :friend, class_name: 'User'
 
     scope :locate_friendship, ->(user_id, friend_id){where("user_id = ? AND friend_id = ?", user_id, friend_id)}
+
+    def remove_friend
+        user.friends.destroy(friend)
+    end
   
     private
   
