@@ -8,11 +8,18 @@
 
 require 'faker'
 
-30.times do 
+30.times do |i|
     name = Faker::Name.name
     User.create({
         name: name,
         email: Faker::Internet.email(name:name),
         password: '123456'
     })
+    3.times do
+        post_body = Faker::Quote.most_interesting_man_in_the_world
+        Post.create({
+            user_id: i,
+            body: post_body
+        })
+    end
 end

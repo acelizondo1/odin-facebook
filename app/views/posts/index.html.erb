@@ -1,0 +1,15 @@
+<div class="column is-6 is-offset-1">
+    <% @posts.each do |post| %>
+        <article class="post columns box m-2">
+            <div class="column is-2">
+                <figure class="is-48x48 is-pulled-right">
+                    <%= image_tag 'https://bulma.io/images/placeholders/48x48.png', alt: 'Placeholder Image' %>
+                </figure>
+            </div>
+            <div class="column is-10">
+                <p class="is-text-weight-semibold is-size-6"><%= post.user.name %></p>
+                <p class="is-size-7"><%= post.body %></p>
+            </div>
+        </article>
+    <% end %>
+</div>
