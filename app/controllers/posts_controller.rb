@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
         if @post.save
             flash[:notice] = 'Status Posted!'
-            redirect_back(fallback_location: root_path)
+            render 'show'
         else
             flash[:alert] = 'There was an issue posting. Please try again.'
             redirect_back(fallback_location: root_path)

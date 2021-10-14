@@ -1,0 +1,25 @@
+<article class="post columns box m-2">
+    <div class="column is-2">
+        <figure class="is-48x48 is-pulled-right">
+            <%= image_tag 'https://bulma.io/images/placeholders/48x48.png', alt: 'Placeholder Image' %>
+        </figure>
+    </div>
+    <div class="column is-9">
+        <p class="is-text-weight-semibold is-size-6"><%= post.user.name %></p>
+        <p class="is-size-6"><%= post.body %></p>
+    </div>
+    <% if current_user.id == post.user_id %>
+        <div class="column is-1">
+            <%= link_to edit_post_path(post), title: 'Edit Post' do %>
+                <span class="icon">
+                    <%= icon('fas', 'pen') %>
+                </span>
+            <% end %>
+            <%= link_to post_path(post), method: :delete, title: 'Delete Post' do %>
+                <span class="icon">
+                    <%= icon('fas', 'trash') %>
+                </span>
+            <% end %>
+        </div>
+    <% end %>
+</article>
