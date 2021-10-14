@@ -3,7 +3,8 @@ class PostsController < ApplicationController
 
     def index
         @post = Post.new
-        @posts = Post.includes(:user).order(updated_at: :desc).limit(10)
+        #@posts = Post.includes(:user).order(updated_at: :desc).limit(10)
+        @posts = Post.joins('INNER JOIN "friendships" ON "friendships"."user_id" = "posts"."user_id"').includes(:user).where("posts.user_id = ? OR friendships.friend_id = ?", 1, 1).order(updated_at: :desc).limit(10)
     end
 
     def user
