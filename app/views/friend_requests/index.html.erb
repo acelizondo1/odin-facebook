@@ -1,24 +1,22 @@
-<div class="column is-6 is-offset-1">
-    <div class="has-text-centered">
-        <div class="hero is-halfheight" id="incoming-requests">
-            <div>
-                <h3 class="is-size-3 mb-5">Incoming Requests</h3>
-                <% if @incoming.empty? %>
-                    <h6 class="is-size-6">You have no new friend requests!</h6>
-                <% else %>
-                    <%= render 'requests', { requests: @incoming, view: 'incoming', button_message: 'Decline' } %>
-                <% end %>
-            </div>
+<div class="has-text-centered">
+    <div class="hero is-halfheight" id="incoming-requests">
+        <div>
+            <h3 class="is-size-3 mb-5">Incoming Requests</h3>
+            <% if @incoming.empty? %>
+                <h6 class="is-size-6">You have no new friend requests!</h6>
+            <% else %>
+                <%= render 'requests', { requests: @incoming, view: 'incoming', button_message: 'Decline' } %>
+            <% end %>
         </div>
-        <div class="hero is-halfheight" id="pending-request">
-            <div>
-                <h3 class="is-size-3 mb-5">Pending Requests</h3>
-                <% if @pending.empty? %>
-                    <h6 class="is-size-6">No pending requests. Go out and find new friends!</h6>
-                <% else %>
-                    <%= render 'requests', { requests: @pending, view: 'pending', button_message: 'Delete Request' } %>
-                <% end %>
-            </div>
+    </div>
+    <div class="hero is-halfheight" id="pending-request">
+        <div>
+            <h3 class="is-size-3 mb-5">Pending Requests</h3>
+            <% if @pending.empty? %>
+                <h6 class="is-size-6">No pending requests. Go out and find new friends!</h6>
+            <% else %>
+                <%= render 'requests', { requests: @pending, view: 'pending', button_message: 'Delete Request' } %>
+            <% end %>
         </div>
     </div>
 </div>

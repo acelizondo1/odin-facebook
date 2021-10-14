@@ -1,24 +1,22 @@
-<div class="column is-6 is-offset-1">
-    <div class="columns is-flex-wrap-wrap has-text-centered">
-        <% @friends.each do |friend| %>
-            <% friendship = Friendship.locate_friendship(current_user.id, friend.id) %>
-            <div class="card column is-5 is-offset-1 block friend-card">
-                <div class="card-content">
-                    <div class="media  is-align-items-center">
-                        <div class="media-left">
-                            <figure class="is-48x48">
-                                <%= image_tag 'https://bulma.io/images/placeholders/96x96.png', alt: 'Placeholder Image' %>
-                            </figure>
-                        </div>
-                        <div class="media-content">
-                            <p class="title is-size-5 is-4"><%= friend.name %></p>
-                        </div>
+<div class="columns is-flex-wrap-wrap has-text-centered">
+    <% @friends.each do |friend| %>
+        <% friendship = Friendship.locate_friendship(current_user.id, friend.id) %>
+        <div class="card column is-5 is-offset-1 block friend-card">
+            <div class="card-content">
+                <div class="media  is-align-items-center">
+                    <div class="media-left">
+                        <figure class="is-48x48">
+                            <%= image_tag 'https://bulma.io/images/placeholders/96x96.png', alt: 'Placeholder Image' %>
+                        </figure>
                     </div>
-                    <div class="content">
-                        <%= link_to 'Unfriend', friendship_path(friendship[0]), method: :delete, data: { confirm:"Are you sure you want to unfriend #{friend.name}"}, class: 'button is-warning is-outlined' %>
+                    <div class="media-content">
+                        <p class="title is-size-5 is-4"><%= friend.name %></p>
                     </div>
                 </div>
+                <div class="content">
+                    <%= link_to 'Unfriend', friendship_path(friendship[0]), method: :delete, data: { confirm:"Are you sure you want to unfriend #{friend.name}"}, class: 'button is-warning is-outlined' %>
+                </div>
             </div>
-        <% end %>
-    </div>
+        </div>
+    <% end %>
 </div>
