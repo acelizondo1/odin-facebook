@@ -1,0 +1,6 @@
+<div>
+    <h3 class="has-text-centered is-size-3">My Posts</h3>
+    <% @posts.each do |post| %>
+        <%= render 'post', post: post %>
+    <% end %>
+</div>

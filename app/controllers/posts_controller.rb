@@ -6,6 +6,10 @@ class PostsController < ApplicationController
         @posts = Post.includes(:user).order(updated_at: :desc).limit(10)
     end
 
+    def user
+        @posts = Post.where("user_id = ?", current_user.id)
+    end
+
     def new 
         @post = Post.new
     end

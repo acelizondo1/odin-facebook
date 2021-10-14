@@ -96,11 +96,26 @@
     </nav>
 
     <div class="columns mt-6" id="side-nav">
-      <div class="column is-2 ml-6">
+      <div class="column is-2 is-offset-1">
         <aside class="menu box">
           <ul class="menu-list">
+            <li>
+              <%= link_to root_path do %>
+                <figure class="is-24x24 is-pulled-left mr-2">
+                  <%= image_tag 'https://bulma.io/images/placeholders/24x24.png', alt: 'Placeholder Image' %>
+                </figure>
+                <span><%= current_user.name %></span>
+              <% end %>
+            </li>
             <li><%= link_to 'Home', root_path %></li>
-            <li><%= link_to 'New Post', root_path %></li>
+            <li><%= link_to 'My Profile', user_path(current_user.id) %></li>
+          </ul>
+          <p class="menu-label">
+            Posts
+          </p>
+          <ul class="menu-list">
+            <li><%= link_to 'New Post', new_post_path %></li>
+            <li><%= link_to 'My Posts', user_posts_path %></li>
           </ul>
           <p class="menu-label">
             Friends
@@ -112,7 +127,7 @@
           </ul>
         </aside>
       </div>
-      <div class="column is-6 is-offset-1">
+      <div class="column is-6">
         <%= yield %>
       </div>
     </div>
