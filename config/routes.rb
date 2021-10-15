@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :posts do 
     get 'user', on: :collection
   end
+  resources :likes, only: [:create, :destroy]
   resources :friend_requests, only: [:index, :create, :update, :destroy]
   resources :friendships, only: [:index, :destroy]
   root "posts#index"
