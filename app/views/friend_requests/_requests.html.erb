@@ -1,6 +1,6 @@
 <div class="columns is-flex-wrap-wrap">
     <% requests.each do |request| %>
-        <% requestor = User.find(request.user.id) %>
+        <% view == 'incoming' ? requestor = User.find(request.user.id) : requestor = User.find(request.friend.id) %>
         <div class="column is-6 ">
             <div class="media columns">
                 <div class="column is-12">

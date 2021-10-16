@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     before_action :current_user?, only: [:show]
 
     def index
-        @users = User.all
+        @users = User.where("NOT id = ?", current_user.id)
     end
 
     def show
