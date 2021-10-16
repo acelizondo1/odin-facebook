@@ -3,6 +3,8 @@ class FriendRequest < ApplicationRecord
   validate :not_friends
   validate :not_pending
 
+  has_many :notificatons, :as => :notifiable
+
   belongs_to :user
   belongs_to :friend, class_name:'User'
 
@@ -13,7 +15,7 @@ class FriendRequest < ApplicationRecord
     destroy
   end
 
-  private 
+  private
 
   def not_self
     errors.add(:friend, "can't be equal to user") if user == friend

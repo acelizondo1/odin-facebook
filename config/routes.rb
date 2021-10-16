@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
-  
   devise_for :users, :controllers => { registrations: 'registrations' }
 
   resources :users, only: [:index, :show]
   resources :posts do 
     get 'user', on: :collection
   end
-  resources :likes, only: [:index, :create, :destroy]
+  
   resources :friend_requests, only: [:index, :create, :update, :destroy]
   resources :friendships, only: [:index, :destroy]
+
+  resources :likes, only: [:index, :create, :destroy]
+  resources :notifications, only: [:index, :create, :update, :destroy]
+
   root "posts#index"
 end
