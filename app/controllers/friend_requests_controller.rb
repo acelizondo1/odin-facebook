@@ -11,6 +11,7 @@ class FriendRequestsController < ApplicationController
         @friend_request = current_user.friend_requests.new(friend: friend)
         
         if @friend_request.save
+            friend.notications.create(notifiable_id: @friend_request.id, notifiable_type: @friend_request.class.to_s)
             redirect_back(fallback_location: root_path)
         else
             flash[:alert] = "Error Sending Friend Request"

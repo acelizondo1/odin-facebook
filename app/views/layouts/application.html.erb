@@ -29,7 +29,7 @@
       <div class="navbar-menu">
         <div class="navbar-end">
           <% if user_signed_in? %>
-            <%= link_to user_path(current_user.id), class: 'navbar-item' do %>
+            <%= link_to notifications_path, class: 'navbar-item' do %>
               <div class="field is-grouped">
                 <p class="control">
                   <span>Notifications</span>
@@ -97,6 +97,7 @@
 
     <div class="columns mt-6" id="side-nav">
       <div class="column is-2 is-offset-1">
+        <% if user_signed_in? %>
         <aside class="menu box">
           <ul class="menu-list">
             <li>
@@ -127,6 +128,7 @@
             <li><%= link_to 'Search For Friends', users_path %></li>
           </ul>
         </aside>
+        <% end %>
       </div>
       <div class="column is-6">
         <%= yield %>

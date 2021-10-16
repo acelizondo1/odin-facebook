@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
     before_action :set_notification, only: [:update, :destroy]
 
     def index
-        @likes = Like.where("user_id = ?", current_user.id)
+        @notifications = Like.where("user_id = ?", current_user.id)
     end
 
     def create

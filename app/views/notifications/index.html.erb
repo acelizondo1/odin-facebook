@@ -1,0 +1,7 @@
+<% if @notifications.empty? %>
+    <% @notifications.each do |notification| %>
+        <%= notification.user.name %>
+    <% end %>
+<% else %>
+    <h3 class="is-size-3 has-text-centered">You have no new notifications</h3>
+<% end %>
