@@ -1,0 +1,4 @@
+<h3 class="is-size-3 has-text-centered">My Liked Posts</h3>
+<% @likes.each do |like| %>
+    <%= render 'posts/post', post: like.post %>
+<% end %>

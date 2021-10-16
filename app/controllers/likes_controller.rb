@@ -2,7 +2,7 @@ class LikesController < ApplicationController
     before_action :set_like, only: [:destroy]
 
     def index 
-
+        @likes = Like.includes(:post).where("user_id = ?", current_user.id)
     end
 
     def create
