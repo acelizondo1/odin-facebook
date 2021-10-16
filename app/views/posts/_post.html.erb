@@ -8,17 +8,19 @@
         <p class="is-text-weight-semibold is-size-6"><%= post.user.name %></p>
         <p class="is-size-6"><%= post.body %></p>
         <div>
-            <% like = Like.locate_like(current_user.id, post.id)%>
+            <% like = Like.locate_like(current_user.id, post.id) %>
             <% if like.empty? %>
                 <%= link_to likes_path(post_id: post), method: :post, class:'is-pulled-right' do %>
                     <span class="icon">
                         <%= icon('far', 'thumbs-up') %>
+                        <span class="pl-1"><%= post.likes.count %></span>
                     </span>
                 <% end %>
             <% else %>
                 <%= link_to like_path(like[0]), method: :delete, class:'is-pulled-right' do %>
                     <span class="icon">
                         <%= icon('fas', 'thumbs-up') %>
+                        <span class="pl-1"><%= post.likes.count %></span>
                     </span>
                 <% end %>
             <% end %>
