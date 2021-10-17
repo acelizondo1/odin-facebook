@@ -1,7 +1,27 @@
-<% if @notifications.empty? %>
-    <% @notifications.each do |notification| %>
-        <%= notification.user.name %>
-    <% end %>
+<% unless @notifications.empty? %>
+    <h3 class="is-size-3 has-text-centered mb-2">Notifications</h3>
+    <div class="columns">
+        <div class="column is-10 is-offset-1">
+            <% @notifications.each do |notification| %>
+                <div class="notification p-2">
+                    <div class="columns">
+                        <div class="column is-2 m-1">
+                            <figure class="is-48x48">
+                                <%= image_tag 'https://bulma.io/images/placeholders/48x48.png', alt: 'Placeholder Image' %>
+                            </figure>
+                        </div>
+                        <div class="column is-8 is-align-self-center">
+                            <% request = FriendRequest.find(notification.notifiable_id) %>
+                            <p>
+                                <%= request.user.name %> sent you a friend request.
+                                <%= link_to 'Respond', friend_requests_path, class: 'button is-info is-small is-pulled-right is-outlined' %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
 <% else %>
     <h3 class="is-size-3 has-text-centered">You have no new notifications</h3>
 <% end %>
