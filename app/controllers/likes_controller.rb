@@ -10,6 +10,7 @@ class LikesController < ApplicationController
         @like = current_user.likes.new(post: post)
 
         if @like.save
+            post.user.notifications.create(notifiable_id: @like.id, notifiable_type: @like.class.to_s)
             redirect_back(fallback_location: root_path)
         else
             flash[:alert] = "Error liking this post."

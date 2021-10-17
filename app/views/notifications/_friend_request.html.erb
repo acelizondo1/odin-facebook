@@ -1,0 +1,12 @@
+<div class="column is-2 m-1">
+    <figure class="is-48x48">
+        <%= image_tag 'https://bulma.io/images/placeholders/48x48.png', alt: 'Placeholder Image' %>
+    </figure>
+</div>
+<div class="column is-8 is-align-self-center">
+    <% request = FriendRequest.find(notification.notifiable_id) %>
+    <p>
+        <%= request.user.name %> sent you a friend request.
+        <%= link_to 'Respond', friend_requests_path, class: 'button is-info is-small is-pulled-right is-outlined' %>
+    </p>
+</div>
