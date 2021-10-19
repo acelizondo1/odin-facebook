@@ -1,28 +1,39 @@
-<article class="post columns box m-2">
-    <div class="column is-2">
-        <figure class="is-48x48 is-pulled-right">
-            <%= image_tag 'https://bulma.io/images/placeholders/48x48.png', alt: 'Placeholder Image' %>
-        </figure>
+<article class="post box m-2">
+    <div class="columns">
+        <div class="column is-2">
+            <figure class="is-48x48 is-pulled-right">
+                <%= image_tag 'https://bulma.io/images/placeholders/48x48.png', alt: 'Placeholder Image' %>
+            </figure>
+        </div>
+        <div class="column is-9">
+            <p class="is-text-weight-semibold is-size-6"><%= post.user.name %></p>
+            <p class="is-size-6"><%= post.body %></p>
+            <div class="likes">
+                <% like = Like.locate_like(current_user.id, post.id) %>
+                <% if like.empty? %>
+                    <%= link_to likes_path(post_id: post), method: :post, class:'is-pulled-right' do %>
+                        <span class="icon">
+                            <%= icon('far', 'thumbs-up') %>
+                            <span class="pl-1"><%= post.likes.count %></span>
+                        </span>
+                    <% end %>
+                <% else %>
+                    <%= link_to like_path(like[0]), method: :delete, class:'is-pulled-right' do %>
+                        <span class="icon">
+                            <%= icon('fas', 'thumbs-up') %>
+                            <span class="pl-1"><%= post.likes.count %></span>
+                        </span>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
     </div>
-    <div class="column is-9">
-        <p class="is-text-weight-semibold is-size-6"><%= post.user.name %></p>
-        <p class="is-size-6"><%= post.body %></p>
-        <div>
-            <% like = Like.locate_like(current_user.id, post.id) %>
-            <% if like.empty? %>
-                <%= link_to likes_path(post_id: post), method: :post, class:'is-pulled-right' do %>
-                    <span class="icon">
-                        <%= icon('far', 'thumbs-up') %>
-                        <span class="pl-1"><%= post.likes.count %></span>
-                    </span>
-                <% end %>
-            <% else %>
-                <%= link_to like_path(like[0]), method: :delete, class:'is-pulled-right' do %>
-                    <span class="icon">
-                        <%= icon('fas', 'thumbs-up') %>
-                        <span class="pl-1"><%= post.likes.count %></span>
-                    </span>
-                <% end %>
+    <div class="comments is-12">
+        <%= render partial: 'comments/comment_form', locals: { comment: post.comments.build, message: 'Comment' } %>
+        <div class="posted_comments">
+            <%= post.comments.first.body %>
+            <% if post.comments.length > 1%>
+                <%= render post.comments %>
             <% end %>
         </div>
     </div>

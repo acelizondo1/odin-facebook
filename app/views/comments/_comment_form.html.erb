@@ -1,0 +1,19 @@
+<%= form_with url: post_comments_path(post_id: comment.post_id), method: :post do |f| %>
+    <div class="comment_form columns m-2">
+        <div class="column is-2">
+            <figure class="is-24x24 is-pulled-right">
+                <%= image_tag 'https://bulma.io/images/placeholders/24x24.png', alt: 'Placeholder Image' %>
+            </figure>
+        </div>
+        <div class="column is-10">
+            <div class="field is-horizontal columns">
+                <div class="control column is-9">
+                    <%= f.text_field :body, placeholder: "Write a comment...", class: 'input is-small' %>
+                </div>
+                <div class="ml-1 column is-2">
+                    <%= f.submit message, class: 'button is-link is-small' %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

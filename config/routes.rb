@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :posts do 
     get 'user', on: :collection
+    resources :comments
   end
   
   resources :friend_requests, only: [:index, :create, :update, :destroy]
