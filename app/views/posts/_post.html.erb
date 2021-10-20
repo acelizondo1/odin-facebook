@@ -29,13 +29,12 @@
         </div>
     </div>
     <div class="comments is-12">
-        <%= render partial: 'comments/comment_form', locals: { comment: post.comments.build, message: 'Comment' } %>
         <div class="posted_comments">
-            <%= post.comments.first.body %>
             <% if post.comments.length > 1%>
                 <%= render post.comments %>
             <% end %>
         </div>
+        <%= render partial: 'comments/comment_form', locals: { comment: post.comments.build, message: 'Comment' } %>
     </div>
     <% if current_user.id == post.user_id %>
         <div class="column is-1">
