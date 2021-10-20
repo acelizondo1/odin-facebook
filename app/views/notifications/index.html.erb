@@ -5,7 +5,19 @@
             <% @notifications.each do |notification| %>
                 <div class="notification p-2">
                     <div class="columns">
-                        <%= render find_view(notification.notifiable_type), notification: notification %>
+                        <% view = generate_view(notification) %>
+                        <div class="column is-2 m-1">
+                            <figure class="image is-48x48">
+                                <%= image_tag 'https://bulma.io/images/placeholders/48x48.png', alt: 'Placeholder Image', class: 'is-rounded' %>
+                            </figure>
+                        </div>
+                        <div class="column is-8 is-align-self-center">
+                            <% request = view[:request] %>
+                            <p>
+                                <%= request.user.name + " " + view[:message] %>
+                                <%= link_to view[:button], view[:path], class: 'button is-info is-small is-pulled-right is-outlined' %>
+                            </p>
+                        </div>
                     </div>
                 </div>
             <% end %>

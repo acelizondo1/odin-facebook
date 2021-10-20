@@ -1,12 +1,30 @@
 module NotificationsHelper
-    def find_view(type)
-        case type
+    def generate_view(notification)
+        case notification.notifiable_type
         when 'FriendRequest'
-            'friend_request'
+            request = FriendRequest.find(notification.notifiable_id)
+            {
+                request: request,
+                message: "sent you a friend request.",
+                button: "Respond",
+                path: friend_requests_path
+            }
         when 'Like'
-            'like'
+            request = Like.find(notification.notifiable_id)
+            {
+                request: request,
+                message: "liked your post.",
+                button: "View",
+                path: post_path(request.post_id)
+            }
         when 'Comment'
-            'comment'
+            request = Comment.find(notification.notifiable_id)
+            {
+                request: request,
+                message: "commented on your post.",
+                button: "View",
+                path: post_path(request.post_id)
+            }
         end
     end
 end
