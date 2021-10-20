@@ -22,7 +22,6 @@ class PostsController < ApplicationController
 
     def create
         @post = current_user.posts.build(post_params)
-
         if @post.save
             flash[:notice] = 'Status Posted!'
             render 'show'

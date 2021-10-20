@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
         @comment = @post.comments.build(user_id: current_user.id, body: post_params[:body])
 
         if @comment.save
+            @post.user.notifications.create(notifiable_id: @comment.id, notifiable_type: @comment.class.to_s)
             flash[:notice] = 'Comment Posted!'
             redirect_back(fallback_location: root_path)
         else
