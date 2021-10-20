@@ -102,8 +102,8 @@
           <ul class="menu-list">
             <li>
               <%= link_to root_path do %>
-                <figure class="is-24x24 is-pulled-left mr-2">
-                  <%= image_tag 'https://bulma.io/images/placeholders/24x24.png', alt: 'Placeholder Image' %>
+                <figure class="image is-24x24 is-pulled-left mr-2">
+                  <%= image_tag 'https://bulma.io/images/placeholders/24x24.png', alt: 'Placeholder Image', class: 'is-rounded' %>
                 </figure>
                 <span><%= current_user.name %></span>
               <% end %>
