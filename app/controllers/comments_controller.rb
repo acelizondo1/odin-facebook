@@ -21,19 +21,6 @@ class CommentsController < ApplicationController
     def show
     end
 
-    def edit
-    end
-
-    def update
-        if @comment.update(post_params)
-            flash[:notice] = 'Your comment was successfully updated'
-            redirect_to post_path(params[:post_id])
-        else
-            flash[:alert] = 'Your comment could not be updated at this time. Please try again.'
-            redirect_back(fallback_location: root_path)
-        end
-    end
-
     def destroy
         if @comment.destroy
             flash[:notice] = 'Your comment was deleted.'
