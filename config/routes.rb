@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
 
-  resources :users, only: [:index, :show]
+  resources :users do 
+    get 'suggest', on: :collection
+  end
+
   resources :posts do 
     get 'user', on: :collection
     resources :comments, except: [:edit, :update]

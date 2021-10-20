@@ -1,0 +1,19 @@
+<div class="box">
+    <h5 class="is-size-5 mb-2">Suggested Friends</h5>
+    <% suggest_users.each do |user| %>
+        <div class="columns mb-2">
+            <figure class="image is-24x24 column is-3 is-pulled-right pt-5">
+                <%= image_tag 'https://bulma.io/images/placeholders/24x24.png', alt: 'Placeholder Image', class: 'is-rounded' %>
+            </figure>
+            <p class="column is-9">
+                <span class="is-size-7"><%= user.name %></span>
+                <%= link_to friend_requests_path(user_id: current_user.id, friend_id: user.id), method: :post, class: 'button is-small' do %>
+                    <span>Add Friend</span>
+                    <span class="icon">
+                        <%= icon('fas', 'user-plus') %>
+                    </span>
+                <% end %>
+            </p>
+        </div>
+    <% end %>
+</div>

@@ -133,6 +133,9 @@
       <div class="column is-6">
         <%= yield %>
       </div>
+      <div class="column is-offset-1 is-2 ml-2">
+        <%= render template: 'users/suggest', locals: {suggest_users: @suggest_users} %>
+      </div>
     </div>
   </body>
 </html>
