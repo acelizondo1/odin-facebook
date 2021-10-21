@@ -4,7 +4,7 @@
             <%= image_tag 'https://bulma.io/images/placeholders/128x128.png', alt: 'Placeholder Image', class: 'is-rounded' %>
         </figure>
     </div>
-    <div class="column is-6">
+    <div class="column is-5">
         <h3 class="is-size-3"><%= current_user.name%></h3>
         <div class="user-info mt-3">
             <span class="icon-text">
@@ -15,5 +15,16 @@
             </span>
             
         </div>
+    </div>
+    <div class="column is-1">
+        <%= link_to edit_user_path(@user), class: 'navbar-item' do %>
+            <div class="field is-grouped">
+            <p class="control">
+                <span class="icon">
+                <%= icon('fas', 'cog') %>
+                </span>
+            </p>
+            </div>
+        <% end %>
     </div>
 </div>

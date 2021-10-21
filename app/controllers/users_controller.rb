@@ -9,6 +9,13 @@ class UsersController < ApplicationController
         @user = current_user
     end
 
+    def edit 
+    end
+
+    def update
+        
+    end
+
     def suggest
         @suggest_users = User.all#left_outer_joins(:friendships).where('NOT friendships.friend_id = ? OR NOT users.user_id = ?', current_user.id, current_user.id)
     end
