@@ -1,1 +1,19 @@
-<h1><%= current_user.name%></h1>
+<div class="columns mt-6">
+    <div class="column is-3 is-offset-2">
+        <figure class="image is-128x128">
+            <%= image_tag 'https://bulma.io/images/placeholders/128x128.png', alt: 'Placeholder Image', class: 'is-rounded' %>
+        </figure>
+    </div>
+    <div class="column is-6">
+        <h3 class="is-size-3"><%= current_user.name%></h3>
+        <div class="user-info mt-3">
+            <span class="icon-text">
+                <span class="icon">
+                    <%= icon('fas', 'envelope') %>
+                </span>
+                <span><%= @user.email %></span>
+            </span>
+            
+        </div>
+    </div>
+</div>
