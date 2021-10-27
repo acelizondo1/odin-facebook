@@ -1,9 +1,32 @@
 <div class="columns mt-6">
-    <div class="column is-3 is-offset-1">
-        <figure class="image is-128x128">
-            <%= image_tag 'https://bulma.io/images/placeholders/128x128.png', alt: 'Placeholder Image', class: 'is-rounded' %>
-        </figure>
+    <div class="column is-4">
+        <%= form_with model: @user do |image| %>
+            <figure class="image">
+                <% if @user.avatar.attached? %>
+                    <%= image_tag @user.avatar, alt: 'Placeholder Image', class: 'is-rounded' %>
+                <% else %>
+                    <%= image_tag 'https://bulma.io/images/placeholders/128x128.png', alt: 'Placeholder Image', class: 'is-rounded' %>
+                <% end %>
+            </figure>
+            
+            <div class="is-flex is-justify-content-center">
+                <div class="file is-boxed is-light is-small mt-2">
+                    <label class="file-label">
+                        <%= image.file_field :avatar, accept: 'image/png,image/jpeg', onchange: 'this.form.submit();', class: 'file-input' %>
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <%= icon('fas', 'upload') %>
+                            </span>
+                            <span class="file-label">
+                                Upload an Image…
+                            </span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        <% end %>
     </div>
+    
     <div class="column is-6">
         <div id="user-info-form">
             <%= form_with model: @user do |f| %>
