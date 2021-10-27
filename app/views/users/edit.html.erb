@@ -1,0 +1,55 @@
+<div class="columns mt-6">
+    <div class="column is-3 is-offset-1">
+        <figure class="image is-128x128">
+            <%= image_tag 'https://bulma.io/images/placeholders/128x128.png', alt: 'Placeholder Image', class: 'is-rounded' %>
+        </figure>
+    </div>
+    <div class="column is-6">
+        <div id="user-info-form">
+            <%= form_with model: @user do |f| %>
+                <h3 class="is-size-3"><%= current_user.name%></h3>
+                <div class="user-info mt-3">
+                    <div class="field">
+                        <div class="columns">
+                            <span class="icon column is-1 mr-2">
+                                <%= icon('fas', 'envelope') %>
+                            </span>
+                            <%= f.text_field :email, class: 'input column i-9' %>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 is-flex is-justify-content-end">
+                    <%= f.submit 'Update', class: 'button is-small is-info' %>
+                </div>
+            <% end %>
+        </div>
+
+        <div id="password-reset-form" class="mt-3">
+            <%= form_with model: @user do |reset| %>
+                <h4 class="is-size-4">Update Password</h4>
+                <div class="mt-3">
+                    <div class="field">
+                        <div class="columns">
+                            <span class="icon column is-1 mr-2">
+                                <%= icon('fas', 'lock') %>
+                            </span>
+                            <%= reset.password_field :password, placeholder: 'Password', class: 'input column i-9' %>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="columns">
+                            <span class="icon column is-1 mr-2">
+                                <%= icon('fas', 'lock') %>
+                            </span>
+                            <%= reset.password_field :password_confirmation, placeholder: 'Confirm Password', class: 'input column i-9' %>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 is-flex is-justify-content-end">
+                    <%= reset.submit 'Change Password', class: 'button is-small is-info' %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

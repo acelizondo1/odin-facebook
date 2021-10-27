@@ -9,11 +9,17 @@ class UsersController < ApplicationController
         @user = current_user
     end
 
-    def edit 
+    def edit
+        @user = current_user 
     end
 
     def update
-        
+        if current_user.update(user_params)
+            flash[:notice] = "Successfully updated your profile"
+            redirect_to current_user
+        else
+            flash[:alert] = "There was an error updating your profile"
+        end
     end
 
     def suggest
@@ -27,4 +33,8 @@ class UsersController < ApplicationController
             redirect_to root_path
         end
     end
+
+    def user_params
+        params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end 
 end
