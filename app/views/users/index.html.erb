@@ -2,9 +2,10 @@
     <% @users.each do |user| %>
         <% unless current_user.friends.exists?(user.id) %>
             <div class="column is-4 block has-text-centered">
-                <figure class="image is-48x48">
-                    <%= image_tag 'https://bulma.io/images/placeholders/48x48.png', alt: 'Placeholder Image', class: 'is-rounded' %>
+                <figure class="image is-square">
+                    <%= image_tag avatar_select(user), alt: 'Placeholder Image', class: 'is-rounded' %>
                 </figure>
+
                 <p><%= user.name %></p>
                 <% friend_request = FriendRequest.locate_request(current_user.id, user.id) %>
                 <% if friend_request.empty? %>

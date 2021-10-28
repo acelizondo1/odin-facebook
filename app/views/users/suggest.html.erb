@@ -3,7 +3,7 @@
     <% suggest_users.each do |user| %>
         <div class="columns mb-2">
             <figure class="image is-24x24 column is-3 is-pulled-right pt-5">
-                <%= image_tag 'https://bulma.io/images/placeholders/24x24.png', alt: 'Placeholder Image', class: 'is-rounded' %>
+                <%= image_tag avatar_select(user, [24,24]), alt: 'Placeholder Image', class: 'is-rounded' %>
             </figure>
             <p class="column is-9">
                 <span class="is-size-7"><%= user.name %></span>
