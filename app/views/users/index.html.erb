@@ -2,9 +2,11 @@
     <% @users.each do |user| %>
         <% unless current_user.friends.exists?(user.id) %>
             <div class="column is-4 block has-text-centered">
-                <figure class="image is-square">
-                    <%= image_tag avatar_select(user), alt: 'Placeholder Image', class: 'is-rounded' %>
-                </figure>
+                <div class="is-flex is-justify-content-center">
+                    <figure class="image is-64x64">
+                        <%= image_tag avatar_select(user, [100, 100]), alt: 'Placeholder Image', class: 'is-rounded' %>
+                    </figure>
+                </div>
 
                 <p><%= user.name %></p>
                 <% friend_request = FriendRequest.locate_request(current_user.id, user.id) %>
