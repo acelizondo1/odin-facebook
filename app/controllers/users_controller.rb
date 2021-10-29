@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-    before_action :current_user?, only: [:show]
 
     def index
         @users = User.left_outer_joins(:friendships).where('NOT users.id = ? AND (NOT friendships.friend_id = ? OR friendships.friend_id IS NULL)', current_user.id, current_user.id)
     end
 
     def show
-        @user = current_user
+        @user = User.find(params[:id])
+        @posts = Post.where("user_id = ?", @user)
     end
 
     def edit

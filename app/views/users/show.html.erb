@@ -1,11 +1,11 @@
 <div class="columns mt-6">
-    <div class="column is-4">
+    <div class="column is-3 is-offset-1">
         <figure class="image is-square">
-            <%= image_tag avatar_select(current_user, [500,500]), alt: 'Placeholder Image', class: 'is-rounded' %>
+            <%= image_tag avatar_select(@user, [250,250]), alt: 'Placeholder Image', class: 'is-rounded' %>
         </figure>
     </div>
     <div class="column is-5">
-        <h3 class="is-size-3"><%= current_user.name%></h3>
+        <h3 class="is-size-3"><%= @user.name%></h3>
         <div class="user-info mt-3">
             <span class="icon-text">
                 <span class="icon">
@@ -13,18 +13,27 @@
                 </span>
                 <span><%= @user.email %></span>
             </span>
-            
         </div>
     </div>
-    <div class="column is-1">
-        <%= link_to edit_user_path(@user), class: 'navbar-item' do %>
-            <div class="field is-grouped">
-            <p class="control">
-                <span class="icon">
-                <%= icon('fas', 'cog') %>
-                </span>
-            </p>
-            </div>
+    <% if @user.id == current_user.id%>
+        <div class="column is-1">
+            <%= link_to edit_user_path(@user), class: 'navbar-item' do %>
+                <div class="field is-grouped">
+                <p class="control">
+                    <span class="icon">
+                    <%= icon('fas', 'cog') %>
+                    </span>
+                </p>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+</div>
+
+<div id="user-posts" class="columns mt-4">
+    <div class="column is-10 is-offset-1">
+        <% @posts.each do |post| %>
+            <%= render 'posts/post', post: post %>
         <% end %>
     </div>
 </div>
