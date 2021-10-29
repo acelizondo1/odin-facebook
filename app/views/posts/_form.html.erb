@@ -2,7 +2,9 @@
     <div class="post columns box m-2">
         <div class="column is-2">
             <figure class="image is-pulled-right">
-                <%= image_tag avatar_select(current_user, [48,48]), alt: 'Placeholder Image', class: 'is-rounded' %>
+                <%= link_to current_user do %>
+                    <%= image_tag avatar_select(current_user, [48,48]), alt: 'Placeholder Image', class: 'is-rounded' %>
+                <% end %>
             </figure>
         </div>
         <div class="column is-10">
