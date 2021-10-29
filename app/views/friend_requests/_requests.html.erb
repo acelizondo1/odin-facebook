@@ -1,34 +1,34 @@
 <div class="columns is-flex-wrap-wrap">
     <% requests.each do |request| %>
         <% view == 'incoming' ? requestor = User.find(request.user.id) : requestor = User.find(request.friend.id) %>
-        <div class="column is-6 ">
+        <div class="column is-4">
             <div class="media columns">
-                <div class="column is-12">
-                    <div class="media-center">
+                <div class="column is-8">
+                    <div class="is-flex is-justify-content-center">
                         <figure class="image is-48x48">
                             <%= image_tag avatar_select(requestor, [75,75]), alt: 'Placeholder Image', class: 'is-rounded' %>
                         </figure>
                     </div>
-                    <div class="media-content">
-                        <h6 class="is-size-6"><%= requestor.name %>
+                    <h6 class="is-size-6"><%= requestor.name %>
+                </div>
+                <div class="column is-2">
+                    <div class="buttons has-text-centered">
+                        <% if view == 'incoming' %>                
+                            <%= link_to friend_request_path(request), method: :put, class: 'button is-small mb-1' do %>
+                                <span>Accept</span>
+                                <span class="icon">
+                                    <%= icon('fas', 'plus') %>
+                                </span>
+                            <% end %>
+                        <% end %>
+                        <%= link_to friend_request_path(request), method: :delete, class: 'button is-small' do %>
+                            <span><%= button_message %></span>
+                            <span class="icon">
+                                <%= icon('fas', 'minus') %>
+                            </span>
+                        <% end %>
                     </div>
                 </div>
-            </div>
-            <div class="buttons column is-12 has-text-centered">
-                <% if view == 'incoming' %>                
-                    <%= link_to friend_request_path(request), method: :put, class: 'button is-small mb-1' do %>
-                        <span>Accept</span>
-                        <span class="icon">
-                            <%= icon('fas', 'plus') %>
-                        </span>
-                    <% end %>
-                <% end %>
-                <%= link_to friend_request_path(request), method: :delete, class: 'button is-small' do %>
-                    <span><%= button_message %></span>
-                    <span class="icon">
-                        <%= icon('fas', 'minus') %>
-                    </span>
-                <% end %>
             </div>
         </div>
     <% end %>
