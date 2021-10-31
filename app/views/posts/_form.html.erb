@@ -14,7 +14,20 @@
                     <%= f.text_area :body, placeholder: "What's on your mind?", class: 'textarea is-small' %>
                 </div>
             </div>
-            <%= f.submit message, class: 'button is-pulled-right is-link' %>
+            <div class="is-flex is-justify-content-space-between">
+                <div class="file has-name is-link is-small">
+                    <label class="file-label">
+                        <%= f.file_field :photo, accept: 'image/png,image/jpeg,image/gif', class: 'file-input' %>
+                        <span class="file-cta">
+                            <span class="file-label">
+                                Add an image
+                            </span>
+                        </span>
+                        <span class="file-name"></span>
+                    </label>
+                </div>
+                <%= f.submit message, class: 'button is-pulled-right is-link' %>
+            </div>
         </div>
     </div>
 <% end %>
