@@ -11,8 +11,12 @@
 
   <body class="has-navbar-fixed-top">
     <div id="alerts">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if flash[:notice] %>
+        <p class="notice notification-body notification is-primary"><%= notice %></p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p class="alert notification-body notification is-danger"><%= alert %></p>
+      <% end %>
     </div>
 
     <nav class="navbar is-link is-fixed-top" role="navigation" aria-label="main navigation">
