@@ -8,6 +8,6 @@ module ApplicationHelper
     end
 
     def choose_root
-        user_signed_in? ? root_path : new_user_session_path
+        user_signed_in? ? authenticated_root_path : unauthenticated_root_path
     end
 end

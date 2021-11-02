@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     root to: 'posts#index', as: :authenticated_root
   end
 
-  authenticated :user do
+  unauthenticated :user do
     root to: redirect('/users/sign_in'), as: :unauthenticated_root
   end
 end
