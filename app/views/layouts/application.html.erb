@@ -21,7 +21,7 @@
 
     <nav class="navbar is-link is-fixed-top" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <%= link_to 'odin-facebook', root_path, class: 'navbar-item' %>
+        <%= link_to 'odin-facebook', choose_root, class: 'navbar-item' %>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
           <span aria-hidden="true"></span>
@@ -134,11 +134,15 @@
         </aside>
         <% end %>
       </div>
+
       <div class="column is-6">
         <%= yield %>
       </div>
+
       <div class="column is-offset-1 is-2 ml-2">
-        <%= render template: 'users/suggest', locals: {suggest_users: @suggest_users} %>
+        <% if user_signed_in? %>
+          <%= render template: 'users/suggest', locals: {suggest_users: @suggest_users} %>
+        <% end %>
       </div>
     </div>
     <%= javascript_pack_tag "index"%>

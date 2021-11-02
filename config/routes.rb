@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
 
-  resources :users do
+  resources :users, only: [:index, :show, :edit, :update] do
     get 'suggest', on: :collection
   end
 
@@ -19,5 +19,8 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'posts#index', as: :authenticated_root
   end
-  root to: redirect('/users/sign_in')
+
+  authenticated :user do
+    root to: redirect('/users/sign_in'), as: :unauthenticated_root
+  end
 end
