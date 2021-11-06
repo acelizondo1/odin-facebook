@@ -11,13 +11,14 @@ class User < ApplicationRecord
   has_many :pending_friends, through: :friend_requests, source: :friend
 
   has_many :friendships, dependent: :destroy
-  has_many :friends, through: :friendships 
+  has_many :friends, through: :friendships, dependent: :destroy
 
-  has_one_attached :avatar
+  has_one_attached :avatar, dependent: :destroy 
 
-  has_many :posts
-  has_many :likes
-  has_many :notifications
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :notifications, dependent: :destroy
         
 
   def self.from_omniauth(auth)

@@ -74,7 +74,7 @@
         <div id="delete-account mt-3">
             <h4 class="is-size-4 my-3">Cancel my account</h4>
 
-            <%= button_to "Cancel my account", user_registration_path(current_user.provider), data: { confirm: "Are you sure?" }, method: :delete, class: "button is-danger" %>
+            <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: "button is-danger" %>
         </div>
     </div>
 </div>

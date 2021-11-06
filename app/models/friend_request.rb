@@ -3,7 +3,7 @@ class FriendRequest < ApplicationRecord
   validate :not_friends
   validate :not_pending
 
-  has_many :notificatons, :as => :notifiable, dependent: :destroy
+  has_many :notifications, :as => :notifiable, dependent: :destroy
 
   belongs_to :user
   belongs_to :friend, class_name:'User'
