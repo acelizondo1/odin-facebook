@@ -21,7 +21,7 @@
 
     <nav class="navbar is-link is-fixed-top" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <%= link_to 'odin-facebook', choose_root, class: 'navbar-item' %>
+        <%= link_to 'odin-facebook', root_path, class: 'navbar-item' %>
 
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
           <span aria-hidden="true"></span>
@@ -105,14 +105,14 @@
         <aside class="menu box">
           <ul class="menu-list">
             <li>
-              <%= link_to choose_root do %>
+              <%= link_to root_path do %>
                 <figure class="image is-24x24 is-pulled-left mr-2">
                   <%= image_tag avatar_select(current_user, [50,50]), alt: 'Placeholder Image', class: 'is-rounded' %>
                 </figure>
                 <span><%= current_user.name %></span>
               <% end %>
             </li>
-            <li><%= link_to 'Home', choose_root %></li>
+            <li><%= link_to 'Home', root_path %></li>
             <li><%= link_to 'My Profile', user_path(current_user.id) %></li>
           </ul>
           <p class="menu-label">

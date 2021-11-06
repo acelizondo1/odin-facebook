@@ -16,11 +16,13 @@ Rails.application.routes.draw do
   resources :likes, only: [:index, :create, :destroy]
   resources :notifications, only: [:index, :create, :update, :destroy]
 
-  authenticated :user do
-    root to: 'posts#index', as: :authenticated_root
-  end
+  root 'posts#index'
 
-  unauthenticated :user do
-    root to: redirect('/users/sign_in'), as: :unauthenticated_root
-  end
+  # authenticated :user do
+  #   root to: 'posts#index', as: :authenticated_root
+  # end
+
+  # unauthenticated :user do
+  #   root to: redirect('/users/sign_in'), as: :unauthenticated_root
+  # end
 end
