@@ -16,8 +16,10 @@ Rails.application.routes.draw do
   resources :likes, only: [:index, :create, :destroy]
   resources :notifications, only: [:index, :create, :update, :destroy]
 
-  authenticated :user do
-    root to: 'posts#index', as: :authenticated_root
+  devise_scope :user do
+    authenticated :user do
+      root to: 'posts#index', as: :authenticated_root
+    end
   end
   root :to => "devise/sessions#new"  
 
