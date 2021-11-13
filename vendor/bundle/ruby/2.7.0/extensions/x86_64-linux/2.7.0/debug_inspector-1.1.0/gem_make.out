@@ -1,0 +1,15 @@
+current directory: /mnt/c/Users/aceli/Documents/Code/Odin/odin-facebook/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+/home/acelizondo/.rbenv/versions/2.7.2/bin/ruby -I /home/acelizondo/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20211113-7347-1trjju2.rb extconf.rb
+creating Makefile
+
+current directory: /mnt/c/Users/aceli/Documents/Code/Odin/odin-facebook/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /mnt/c/Users/aceli/Documents/Code/Odin/odin-facebook/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.so
+
+current directory: /mnt/c/Users/aceli/Documents/Code/Odin/odin-facebook/vendor/bundle/ruby/2.7.0/gems/debug_inspector-1.1.0/ext/debug_inspector
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug_inspector.so ./.gem.20211113-7347-vxonuz

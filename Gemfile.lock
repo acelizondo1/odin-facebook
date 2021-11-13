@@ -63,7 +63,13 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     bcrypt (3.1.16)
+    better_errors (2.9.1)
+      coderay (>= 1.0.0)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
     bindex (0.8.1)
+    binding_of_caller (0.8.0)
+      debug_inspector (>= 0.0.1)
     bootsnap (1.9.1)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -82,6 +88,7 @@ GEM
     coderay (1.1.3)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    debug_inspector (1.1.0)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -90,6 +97,11 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
     erubi (1.10.0)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
     faraday (1.8.0)
@@ -226,6 +238,10 @@ GEM
       bundler (>= 1.15.0)
       railties (= 6.1.4.1)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -288,6 +304,8 @@ GEM
     shoulda-matchers (5.0.0)
       activesupport (>= 5.2.0)
     spring (3.0.0)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -330,11 +348,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors (~> 2.8, >= 2.8.3)
+  binding_of_caller (~> 0.8.0)
   bootsnap (>= 1.4.4)
   bulma-rails (~> 0.9.1)
   byebug
   capybara (>= 3.26)
   devise (~> 4.8)
+  factory_bot_rails (~> 6.1)
   faker (~> 2.19)
   figaro
   font-awesome-sass (~> 5.15.1)
@@ -350,11 +371,13 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
+  rails-controller-testing
   rspec-rails (>= 3.9.0)
   sass-rails (>= 6)
   selenium-webdriver
   shoulda-matchers (~> 5.0)
   spring
+  spring-commands-rspec (~> 1.0, >= 1.0.4)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
