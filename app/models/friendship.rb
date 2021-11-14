@@ -17,7 +17,6 @@ class Friendship < ApplicationRecord
   
     def create_inverse_relationship
         unless !Friendship.where("user_id = ? AND friend_id = ?", friend.id, user.id).empty?
-            puts "in unless"
             friend.friendships.create(friend: user) 
         end
     end
