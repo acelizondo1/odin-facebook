@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject (:user) {FactoryBot.build(:user)}
+  subject(:user) {FactoryBot.build(:user)}
 
   describe "Validations" do 
     it { should validate_presence_of(:name) }
@@ -25,11 +25,6 @@ RSpec.describe User, type: :model do
       let (:user_2) {FactoryBot.create(:user)}
       let (:user_3) {FactoryBot.create(:user)}
       let (:user_4) {FactoryBot.create(:user)}
-
-      it "should build a two way friendship" do
-        friendship = Friendship.create!(user: user_1, friend: user)
-        expect(user.friendships[0].friend).to eq(user_1)
-      end
 
       it "should connect with friends" do
         Friendship.create!(user: user, friend: user_1)

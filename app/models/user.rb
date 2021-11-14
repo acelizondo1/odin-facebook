@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  scope :non_friends, ->(user_id){left_outer_joins(:friendships).where('NOT users.id = ? AND (NOT friendships.friend_id = ? OR friendships.friend_id IS NULL)', user_id, user_id).order('RANDOM()')}
+  scope :non_friends, ->(user){left_outer_joins(:friendships).where('NOT users.id = ? AND (NOT friendships.friend_id = ? OR friendships.friend_id IS NULL)', user.id, user.id).order('RANDOM()')}
         
 
   def self.from_omniauth(auth)
