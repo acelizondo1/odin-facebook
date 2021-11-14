@@ -41,6 +41,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
+  gem "faker", "~> 2.19"
   gem 'rspec-rails', ">= 3.9.0"
   gem 'factory_bot_rails', '~> 6.1'
 end
@@ -58,10 +59,10 @@ group :development do
   gem 'better_errors', '~> 2.8', '>= 2.8.3'
   gem 'binding_of_caller', '~> 0.8.0'
 
-  gem 'guard-rspec', '4.6.0'
+  gem 'guard', '~> 2.16', '>= 2.16.2'
+  gem 'guard-rspec', '4.6.0', require: false
   gem 'spring-commands-rspec', '~> 1.0', '>= 1.0.4'
   
-  gem "faker", "~> 2.19"
   gem "letter_opener"
 end
 

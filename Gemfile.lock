@@ -360,6 +360,7 @@ DEPENDENCIES
   figaro
   font-awesome-sass (~> 5.15.1)
   graphicsmagick
+  guard (~> 2.16, >= 2.16.2)
   guard-rspec (= 4.6.0)
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
