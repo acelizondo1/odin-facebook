@@ -1,4 +1,4 @@
-<div class="columns mt-6">
+<div class="columns mt-6" id="user-profile">
     <div class="column is-3 is-offset-1">
         <figure class="image is-square">
             <%= image_tag avatar_select(@user, [250,250]), alt: 'Placeholder Image', class: 'is-rounded' %>
@@ -17,7 +17,7 @@
     </div>
     <% if @user.id == current_user.id%>
         <div class="column is-1">
-            <%= link_to edit_user_path(@user), class: 'navbar-item' do %>
+            <%= link_to edit_user_path(@user), class: 'navbar-item', id: 'edit-profile' do %>
                 <div class="field is-grouped">
                 <p class="control">
                     <span class="icon">

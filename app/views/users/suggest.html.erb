@@ -1,7 +1,7 @@
-<div class="box">
+<div class="box" id="suggest-friends">
     <h5 class="is-size-5 mb-2">Suggested Friends</h5>
     <% suggest_users.each do |user| %>
-        <div class="columns mb-2">
+        <div class="columns mb-2 suggested-user">
             <figure class="image is-24x24 column is-3 is-pulled-right pt-5">
                 <%= link_to user do %>
                     <%= image_tag avatar_select(user, [24,24]), alt: 'Placeholder Image', class: 'is-rounded' %>
