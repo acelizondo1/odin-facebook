@@ -56,6 +56,14 @@ RSpec.describe 'Users', type: :system do
                 expect(page.find('img')['src']).to have_content('test_image_2.png')
             end   
         end
+
+        scenario 'cancels user account' do
+            click_link 'edit-profile'
+            accept_confirm do 
+                click_button 'Cancel my account'
+            end
+            expect(page).to have_content('Bye! Your account has been successfully cancelled. We hope to see you again soon.') 
+        end
     end
 
 end
