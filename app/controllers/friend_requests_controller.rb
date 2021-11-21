@@ -20,13 +20,11 @@ class FriendRequestsController < ApplicationController
 
     def update 
         @friend_request.accept
-        Notification.find_by(notifiable_id: @friend_request.id).destroy
         flash[:notice] = "Friend Request Accepted"
         redirect_back(fallback_location: root_path)
     end
 
     def destroy
-        Notification.find_by(notifiable_id: @friend_request.id).destroy
         @friend_request.destroy
         redirect_back(fallback_location: root_path)
     end
