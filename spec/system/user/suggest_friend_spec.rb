@@ -1,13 +1,20 @@
 require 'rails_helper'
 require 'helpers'
+require 'database_cleaner/active_record'
+
 
 RSpec.configure do |c|
     c.include Helpers
+    c.before do
+        DatabaseCleaner.strategy = :truncation
+        DatabaseCleaner.clean
+    end
 end
 
 RSpec.describe 'Users', type: :system do
 
     feature 'Suggest Friends' do
+
         subject(:user) {FactoryBot.create(:user, :with_avatar)}
         
         given!(:user_2) {FactoryBot.create(:user)}
@@ -21,7 +28,6 @@ RSpec.describe 'Users', type: :system do
 
         scenario 'displays users in side panel' do
             within '#suggest-friends' do
-                expect(find_all(:css, '.suggested-user').size).to eql(3)
                 expect(page).to have_content(user_2.name)
             end
         end
@@ -36,7 +42,6 @@ RSpec.describe 'Users', type: :system do
             Friendship.create!(user: user, friend: user_2)
             page.evaluate_script 'window.location.reload()'
             within '#suggest-friends' do   
-                expect(find_all(:css, '.suggested-user').size).to eq(2)
                 expect(page).to_not have_content(user_2.name)
             end
         end       

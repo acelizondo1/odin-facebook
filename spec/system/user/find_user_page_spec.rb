@@ -19,15 +19,13 @@ RSpec.describe 'Users', type: :system do
         scenario 'able to see all users' do
            visit users_path 
            
-           expect(page).to have_selector 'p', text: user_2.name
-           expect(page).to have_link 'Add Friend'
-           
+           expect(page.find_all(:css, '.user').size).to eq(User.all.size-1)
         end
 
         scenario 'able to send friend request' do
             visit users_path
 
-            within '.is-6' do
+            within "#user-#{user_2.id}" do
                 click_on 'Add Friend'
             end
             expect(page).to have_link 'Delete Request'
@@ -35,7 +33,7 @@ RSpec.describe 'Users', type: :system do
 
         scenario 'able to unsend friend request' do
             visit users_path
-            within '.is-6' do
+            within "#user-#{user_2.id}" do
                 click_on 'Add Friend'
                 click_on 'Delete Request'
                 expect(page).to have_link 'Add Friend'

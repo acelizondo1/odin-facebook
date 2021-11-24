@@ -1,7 +1,7 @@
 <div class="columns is-flex-wrap-wrap">
     <% @users.each do |user| %>
         <% unless current_user.friends.exists?(user.id) %>
-            <div class="column is-4 block has-text-centered">
+            <div class="column is-4 block has-text-centered user" id="user-<%= user.id %>">
                 <%= link_to user do %>
                     <div class="is-flex is-justify-content-center">
                         <figure class="image is-64x64">
