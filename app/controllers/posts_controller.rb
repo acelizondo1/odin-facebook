@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action :confirm_user, only: [:edit, :update, :destroy]
 
     def index
         @post = Post.new
@@ -44,7 +45,7 @@ class PostsController < ApplicationController
     def destroy 
         if @post.destroy
             flash[:notice] = 'Your post was deleted.'
-            redirect_back(fallback_location: root_path)
+            redirect_to root_path
         else 
             flash[:alert] = 'There was an issue deleting your post. Please try again.'
             redirect_back(fallback_location: root_path)
@@ -60,5 +61,12 @@ class PostsController < ApplicationController
 
     def set_post
         @post = Post.find(params[:id])
+    end
+
+    def confirm_user 
+        unless @post.user.id == current_user.id
+            flash[:alert] = 'You cannot edit this post!'
+            redirect_to post_path(@post)
+        end
     end
 end

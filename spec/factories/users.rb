@@ -8,5 +8,17 @@ FactoryBot.define do
         trait :with_avatar do
           avatar { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'assets', 'test_image.png'), 'img/png') }
         end
+
+        factory :user_with_post do
+          after :create do |user|
+            create :post, user: user
+          end
+        end
+
+        factory :user_with_post_with_photo do
+          after :create do |user|
+            create :post_with_photo, user: user
+          end
+        end
   end
 end
