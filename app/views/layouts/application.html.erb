@@ -141,7 +141,6 @@
 
       <div class="column is-offset-1 is-2 ml-2">
         <% if user_signed_in? %>
-          <%= User.all.size %>
           <%= render template: 'users/suggest', locals: {suggest_users: @suggest_users} %>
         <% end %>
       </div>

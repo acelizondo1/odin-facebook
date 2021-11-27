@@ -1,4 +1,4 @@
-<div class="comment columns">
+<div class="comment columns" id="comment-<%= comment.id %>">
     <div class="column is-2 is-align-self-center">
         <figure class="image is-24x24 is-pulled-right">
             <%= link_to comment.user do %>
@@ -6,8 +6,17 @@
             <% end %>
         </figure>
     </div>
-    <div class="column is-10">
+    <div class="column is-9">
         <p><%=  link_to comment.user.name, comment.user %></p>
         <%= comment.body %>
     </div>
+    <% if current_user.id == comment.user_id %>
+        <div class="column is-1">
+            <%= link_to post_comment_path(post_id: comment.post.id, comment: comment), method: :delete, title: 'Delete Comment' do %>
+                <span class="icon">
+                    <%= icon('fas', 'trash') %>
+                </span>
+            <% end %>
+        </div>
+    <% end %>
 </div>

@@ -1,13 +1,15 @@
 class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
-    before_action :confirm_user, only: [:edit, :update, :destroy]
+    before_action :check_access, only: [:show, :edit, :update, :destroy]
 
     def index
+        @post_friend = true
         @post = Post.new
         @posts = Post.joins('INNER JOIN "friendships" ON "friendships"."user_id" = "posts"."user_id"').includes(:user).distinct.where("posts.user_id = ? OR friendships.friend_id = ?", current_user.id, current_user.id).order(updated_at: :desc).limit(10)
     end
 
     def user
+        @post_friend = true
         @posts = Post.where("user_id = ?", current_user.id)
     end
 
@@ -63,10 +65,15 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
     end
 
-    def confirm_user 
-        unless @post.user.id == current_user.id
-            flash[:alert] = 'You cannot edit this post!'
-            redirect_to post_path(@post)
+    def check_access 
+        if @post.user.friends.include?(current_user) || @post.user == current_user
+            @post_friend = true
+        else
+            @post_friend = false
+            unless action_name == 'show'
+                flash[:alert] = 'You cannot edit this post!'
+                redirect_to post_path(@post)
+            end
         end
     end
 end

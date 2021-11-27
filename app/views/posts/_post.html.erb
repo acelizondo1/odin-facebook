@@ -49,12 +49,14 @@
             </div>
         <% end %>
     </div>
-    <div class="comments is-12">
-        <div class="posted_comments">
-            <% if post.comments.length > 1%>
-                <%= render post.comments %>
-            <% end %>
+    <% if @post_friend %>
+        <div class="comments is-12">
+            <div class="posted_comments">
+                <% if post.comments.length > 1%>
+                    <%= render post.comments %>
+                <% end %>
+            </div>
+            <%= render partial: 'comments/comment_form', locals: { comment: post.comments.build, message: 'Comment' } %>
         </div>
-        <%= render partial: 'comments/comment_form', locals: { comment: post.comments.build, message: 'Comment' } %>
-    </div>
+    <% end %>
 </article>
