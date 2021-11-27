@@ -5,9 +5,9 @@ RSpec.configure do |c|
     c.include Helpers
 end
 
-RSpec.describe 'Posts', type: :system do
+RSpec.describe 'Comments', type: :system do
 
-    feature 'New Comment' do
+    feature 'Edit Comment' do
 
         subject(:user_1) {FactoryBot.create(:user_with_post)}
         let!(:user_2) {FactoryBot.create(:user)}

@@ -5,7 +5,7 @@ RSpec.configure do |c|
     c.include Helpers
 end
 
-RSpec.describe 'Posts', type: :system do
+RSpec.describe 'Comments', type: :system do
 
     feature 'New Comment' do
 
