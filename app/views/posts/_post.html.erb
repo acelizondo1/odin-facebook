@@ -15,24 +15,26 @@
                     <%= image_tag post.photo, alt: 'Post Image', class: '' %>
                 <% end %>
             </div>
-            <div class="likes">
-                <% like = Like.locate_like(current_user.id, post.id) %>
-                <% if like.empty? %>
-                    <%= link_to likes_path(post_id: post), method: :post, class:'is-pulled-right' do %>
-                        <span class="icon">
-                            <%= icon('far', 'thumbs-up') %>
-                            <span class="pl-1"><%= post.likes.count %></span>
-                        </span>
+            <% if @post_friend %>
+                <div class="likes">
+                    <% like = Like.locate_like(current_user.id, post.id) %>
+                    <% if like.empty? %>
+                        <%= link_to likes_path(post_id: post), method: :post, class:'is-pulled-right', title: 'Like Post' do %>
+                            <span class="icon">
+                                <%= icon('far', 'thumbs-up') %>
+                                <span class="pl-1"><%= post.likes.count %></span>
+                            </span>
+                        <% end %>
+                    <% else %>
+                        <%= link_to like_path(like[0]), method: :delete, class:'is-pulled-right', title: 'Like Post' do %>
+                            <span class="icon">
+                                <%= icon('fas', 'thumbs-up') %>
+                                <span class="pl-1"><%= post.likes.count %></span>
+                            </span>
+                        <% end %>
                     <% end %>
-                <% else %>
-                    <%= link_to like_path(like[0]), method: :delete, class:'is-pulled-right' do %>
-                        <span class="icon">
-                            <%= icon('fas', 'thumbs-up') %>
-                            <span class="pl-1"><%= post.likes.count %></span>
-                        </span>
-                    <% end %>
-                <% end %>
-            </div>
+                </div>
+            <% end %>
         </div>
         <% if current_user.id == post.user_id %>
             <div class="column is-1">
