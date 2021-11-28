@@ -24,6 +24,7 @@ RSpec.describe 'Comments', type: :system do
             end
             expect(user.posts.first.comments.size).to eq(1)
             expect(page).to have_content('Comment Posted!')
+            expect(page).to have_selector("#comment-#{user.posts.first.comments.first.id}")
         end
 
         scenario 'able to comment on a friends post' do
@@ -35,6 +36,7 @@ RSpec.describe 'Comments', type: :system do
             end
             expect(user_2.posts.first.comments.size).to eq(1)
             expect(page).to have_content('Comment Posted!')
+            expect(page).to have_selector("#comment-#{user_2.posts.first.comments.first.id}")
         end
 
         scenario 'unable to comment on an unfriended users post' do

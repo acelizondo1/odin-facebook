@@ -36,8 +36,6 @@ RSpec.describe 'Comments', type: :system do
         end
 
         scenario 'it deletes comment' do
-            puts post.id
-            puts user_1_comment.id
             visit post_path(post)
             within "#comment-#{user_1_comment.id}" do
                 click_link 'Delete Comment'

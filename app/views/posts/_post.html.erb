@@ -54,7 +54,7 @@
     <% if @post_friend %>
         <div class="comments is-12">
             <div class="posted_comments">
-                <% if post.comments.length > 1%>
+                <% if post.comments.length > 0 %>
                     <%= render post.comments %>
                 <% end %>
             </div>

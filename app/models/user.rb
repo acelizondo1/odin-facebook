@@ -22,7 +22,11 @@ class User < ApplicationRecord
 
   scope :non_friends, ->(user){left_outer_joins(:friendships).where('NOT users.id = ? AND (NOT friendships.friend_id = ? OR friendships.friend_id IS NULL)', user.id, user.id).order('RANDOM()')}
         
-
+  def self.is_friend?(user, friend)
+    is_friend = Friendship.where("user_id = ? AND friend_id = ?", user.id, friend.id)
+    is_friend.empty? ? false : true
+  end
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

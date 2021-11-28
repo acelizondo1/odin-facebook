@@ -38,7 +38,18 @@ RSpec.describe User, type: :model do
           Friendship.create!(user: user_2, friend: user)
           Friendship.create!(user: user, friend: user_1)
           
-          expect(User.non_friends(user)).to eq([user_4]) 
+          expect(User.non_friends(user)).to_not include([user_1, user_2, user_3]) 
+        end
+      end
+
+      describe "#is_friend?" do
+        it "should return true if passed user is a current friend" do
+          Friendship.create!(user: user, friend: user_1)
+          expect(User.is_friend?(user, user_1)).to be true
+        end
+
+        it "should return false if passed user is not a friend" do
+          expect(User.is_friend?(user, user_4)).to be false
         end
       end
     end

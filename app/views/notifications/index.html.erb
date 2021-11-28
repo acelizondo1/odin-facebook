@@ -5,14 +5,14 @@
             <% @notifications.each do |notification| %>
                 <% view = generate_view(notification) %>
                 <% request = view[:request] %>
-                <div class="notification p-2">
+                <div class="notification p-2" id="notification-<%= notification.id %>">
                     <div class="columns">
                         <div class="column is-2 m-1">
                             <figure class="image is-48x48">
                                 <%= image_tag avatar_select(request.user, [48,48]), alt: 'Placeholder Image', class: 'is-rounded' %>
                             </figure>
                         </div>
-                        <div class="column is-8 is-align-self-center">
+                        <div class="column is-9 is-align-self-center">
                             <p>
                                 <%= request.user.name + " " + view[:message] %>
                                 <%= link_to view[:button], view[:path], class: 'button is-info is-small is-pulled-right is-outlined' %>
