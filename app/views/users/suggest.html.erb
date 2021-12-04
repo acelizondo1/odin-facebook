@@ -4,7 +4,11 @@
         <div class="columns mb-2 suggested-user">
             <figure class="image is-24x24 column is-3 is-pulled-right pt-5">
                 <%= link_to user do %>
-                    <%= image_tag avatar_select(user, [24,24]), alt: 'Placeholder Image', class: 'is-rounded' %>
+                    <% if user.avatar.attached? %>
+                        <%= cl_image_tag user.avatar.key, :width => 24, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
+                    <% else %>
+                        <%= image_tag "https://bulma.io/images/placeholders/128x128.png", alt: 'Placeholder Image', class: 'is-rounded' %>
+                    <% end %>
                 <% end %>
             </figure>
             <p class="column is-9">

@@ -49,7 +49,6 @@ RSpec.describe 'Notifications', type: :system do
                 click_button 'Comment'
             end
             
-            puts post.comments.first.body
             expect(user_2.notifications.count).to eq(1)
             expect(page).to have_selector("#comment-#{post.comments.first.id}")
         end

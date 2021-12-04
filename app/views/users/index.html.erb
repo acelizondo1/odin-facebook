@@ -5,7 +5,11 @@
                 <%= link_to user do %>
                     <div class="is-flex is-justify-content-center">
                         <figure class="image is-64x64">
-                            <%= image_tag avatar_select(user, [100, 100]), alt: 'Placeholder Image', class: 'is-rounded' %>
+                            <% if user.avatar.attached? %>
+                                <%= cl_image_tag user.avatar.key, :width => 48, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
+                            <% else %>
+                                <%= image_tag "https://bulma.io/images/placeholders/128x128.png", alt: 'Placeholder Image', class: 'is-rounded' %>
+                            <% end %>
                         </figure>
                     </div>
                     <p><%= user.name %></p>

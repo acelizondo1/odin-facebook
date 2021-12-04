@@ -107,7 +107,11 @@
             <li>
               <%= link_to authenticated_root_path do %>
                 <figure class="image is-24x24 is-pulled-left mr-2">
-                  <%= image_tag avatar_select(current_user, [50,50]), alt: 'Placeholder Image', class: 'is-rounded' %>
+                  <% if current_user.avatar.attached? %>
+                      <%= cl_image_tag current_user.avatar.key, :width => 50, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
+                  <% else %>
+                      <%= image_tag "https://bulma.io/images/placeholders/128x128.png", alt: 'Placeholder Image', class: 'is-rounded' %>
+                  <% end %>
                 </figure>
                 <span><%= current_user.name %></span>
               <% end %>

@@ -3,10 +3,14 @@
         <div class="column is-2">
             <figure class="image is-48x48 is-pulled-right">
                 <%= link_to post.user do %>
-                    <%= image_tag avatar_select(post.user, [48,48]), alt: 'Placeholder Image', class: 'is-rounded' %>
+                    <% if post.user.avatar.attached? %>
+                        <%= cl_image_tag post.user.avatar.key, :width => 48, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
+                    <% else %>
+                        <%= image_tag "https://bulma.io/images/placeholders/128x128.png", alt: 'Placeholder Image', class: 'is-rounded' %>
+                    <% end %>
                 <% end %>
             </figure>
-        </div>
+        </div> 
         <div class="column is-9">
             <p class="is-text-weight-semibold is-size-6"><%= link_to post.user.name, post.user %></p>
             <p class="is-size-6"><%= post.body %></p>

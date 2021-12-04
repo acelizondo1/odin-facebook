@@ -7,7 +7,11 @@
                     <%= link_to requestor do %>
                         <div class="is-flex is-justify-content-center">
                             <figure class="image is-48x48">
-                                <%= image_tag avatar_select(requestor, [75,75]), alt: 'Placeholder Image', class: 'is-rounded' %>
+                                <% if requestor.avatar.attached? %>
+                                    <%= cl_image_tag requestor.avatar.key, :width => 75, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
+                                <% else %>
+                                    <%= image_tag "https://bulma.io/images/placeholders/128x128.png", alt: 'Placeholder Image', class: 'is-rounded' %>
+                                <% end %>
                             </figure>
                         </div>
                         <h6 class="is-size-6"><%= requestor.name %>

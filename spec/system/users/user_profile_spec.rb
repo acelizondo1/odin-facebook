@@ -20,7 +20,7 @@ RSpec.describe 'Users', type: :system do
 
         scenario 'shows logged in user info' do
             within '#user-profile' do
-                expect(page.find('img')['src']).to have_content('test_image.png')
+                expect(user.avatar.attached?).to be true
                 expect(page.find('h3')).to have_content(user.name)
                 expect(page).to have_content(user.email)
             end
@@ -37,7 +37,9 @@ RSpec.describe 'Users', type: :system do
         scenario 'edits user information' do
             click_link 'edit-profile'
             fill_in 'user_email', with: 'new_email@test.com'
-            click_button 'Update'
+            click_on 'Update'
+            
+            expect(page).to have_content('Successfully updated your profile') 
             expect(User.find_by(name: user.name).email).to eq('new_email@test.com')
         end
 
@@ -52,9 +54,7 @@ RSpec.describe 'Users', type: :system do
         scenario 'updates user avatar' do
             click_link 'edit-profile'
             find('input', {class: 'file-input', visible: false}).set(Rails.root + 'spec/support/assets/test_image_2.png')
-            within '#user-profile' do
-                expect(page.find('img')['src']).to have_content('test_image_2.png')
-            end   
+            expect(page).to have_content('Successfully updated your profile') 
         end
 
         scenario 'cancels user account' do

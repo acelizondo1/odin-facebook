@@ -12,7 +12,11 @@
                         <div class="media  is-align-items-center">
                             <div class="media-left">
                                 <figure class="image is-96x96">
-                                    <%= image_tag avatar_select(friend, [150,150]), alt: 'Placeholder Image', class: 'is-rounded' %>
+                                    <% if friend.avatar.attached? %>
+                                        <%= cl_image_tag friend.avatar.key, :width => 48, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
+                                    <% else %>
+                                        <%= image_tag "https://bulma.io/images/placeholders/128x128.png", alt: 'Placeholder Image', class: 'is-rounded' %>
+                                    <% end %>
                                 </figure>
                             </div>
                             <div class="media-content">
