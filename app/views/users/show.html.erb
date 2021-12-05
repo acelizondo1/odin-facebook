@@ -2,7 +2,7 @@
     <div class="column is-3 is-offset-1">
         <figure class="image is-square">
             <% if @user.avatar.attached? %>
-                <%= cl_image_tag @user.avatar.key, :width => 250, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
+                <%= cl_image_tag @user.avatar.key, :width => 250, :height => 250, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
             <% else %>
                 <%= image_tag "https://bulma.io/images/placeholders/128x128.png", alt: 'Placeholder Image', class: 'is-rounded' %>
             <% end %>

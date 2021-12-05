@@ -5,7 +5,7 @@
             <figure class="image is-24x24 column is-3 is-pulled-right pt-5">
                 <%= link_to user do %>
                     <% if user.avatar.attached? %>
-                        <%= cl_image_tag user.avatar.key, :width => 24, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
+                        <%= cl_image_tag user.avatar.key, :width => 24, :height => 24, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
                     <% else %>
                         <%= image_tag "https://bulma.io/images/placeholders/128x128.png", alt: 'Placeholder Image', class: 'is-rounded' %>
                     <% end %>

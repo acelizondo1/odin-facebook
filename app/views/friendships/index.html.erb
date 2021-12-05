@@ -13,7 +13,7 @@
                             <div class="media-left">
                                 <figure class="image is-96x96">
                                     <% if friend.avatar.attached? %>
-                                        <%= cl_image_tag friend.avatar.key, :width => 48, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
+                                        <%= cl_image_tag friend.avatar.key, :width => 48, :height => 48, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
                                     <% else %>
                                         <%= image_tag "https://bulma.io/images/placeholders/128x128.png", alt: 'Placeholder Image', class: 'is-rounded' %>
                                     <% end %>

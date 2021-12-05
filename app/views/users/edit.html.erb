@@ -3,7 +3,7 @@
         <%= form_with model: @user do |image| %>
             <figure class="image is-square">
                 <% if current_user.avatar.attached? %>
-                    <%= cl_image_tag current_user.avatar.key, :width => 500, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
+                    <%= cl_image_tag current_user.avatar.key, :width => 500, :height => 500, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
                 <% else %>
                     <%= image_tag "https://bulma.io/images/placeholders/128x128.png", alt: 'Placeholder Image', class: 'is-rounded' %>
                 <% end %>

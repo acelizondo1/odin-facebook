@@ -8,7 +8,7 @@
                         <div class="is-flex is-justify-content-center">
                             <figure class="image is-48x48">
                                 <% if requestor.avatar.attached? %>
-                                    <%= cl_image_tag requestor.avatar.key, :width => 75, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
+                                    <%= cl_image_tag requestor.avatar.key, :width => 75, :height => 75, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
                                 <% else %>
                                     <%= image_tag "https://bulma.io/images/placeholders/128x128.png", alt: 'Placeholder Image', class: 'is-rounded' %>
                                 <% end %>

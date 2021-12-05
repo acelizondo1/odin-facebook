@@ -10,7 +10,7 @@
                         <div class="column is-2 m-1">
                             <figure class="image is-48x48">
                                 <% if request.user.avatar.attached? %>
-                                    <%= cl_image_tag request.user.avatar.key, :width => 48, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
+                                    <%= cl_image_tag request.user.avatar.key, :width => 48, :height => 48, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
                                 <% else %>
                                     <%= image_tag "https://bulma.io/images/placeholders/128x128.png", alt: 'Placeholder Image', class: 'is-rounded' %>
                                 <% end %>
