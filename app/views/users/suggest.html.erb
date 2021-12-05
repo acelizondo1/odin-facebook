@@ -1,18 +1,18 @@
 <div class="box" id="suggest-friends">
     <h5 class="is-size-5 mb-2">Suggested Friends</h5>
     <% suggest_users.each do |user| %>
-        <div class="columns mb-2 suggested-user">
+        <div class="columns mb-2 suggested-user is-flex">
             <figure class="image is-24x24 column is-3 is-pulled-right pt-5">
                 <%= link_to user do %>
                     <% if user.avatar.attached? %>
-                        <%= cl_image_tag user.avatar.key, :width => 24, :height => 24, :crop => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
+                        <%= cl_image_tag user.avatar.key, :width => 24, :height => 24, :resize => "fill", alt: 'Placeholder Image', class: 'is-rounded' %>
                     <% else %>
                         <%= image_tag "https://bulma.io/images/placeholders/128x128.png", alt: 'Placeholder Image', class: 'is-rounded' %>
                     <% end %>
                 <% end %>
             </figure>
-            <p class="column is-9">
-                <span class="is-size-7"><%= link_to user.name, user %></span>
+            <p class="column is-9 is-align-items-center">
+                <span class="is-size-6 mr-1"><%= link_to user.name, user %></span>
                 <%= link_to friend_requests_path(user_id: current_user.id, friend_id: user.id), method: :post, class: 'button is-small' do %>
                     <span>Add Friend</span>
                     <span class="icon">
