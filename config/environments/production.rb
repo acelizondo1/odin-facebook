@@ -118,14 +118,12 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  config.action_mailer.default_url_options = { host: ENV['host'], port: 587 }
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => "smtp-relay.sendinblue.com",
-    :port => 587,
-    :user_name => ENV['send_in_blue_username'],
-    :password => ENV['send_in_blue_password'],
-    :authentication => 'login',
+    :address        => ENV.fetch('SMTP_HOST', 'smtp-relay.sendinblue.com'),
+    :port           => ENV.fetch('SMTP_PORT', '587'),
+    :authentication => :plain,
+    :user_name      => ENV['send_in_blue_username'], #See: https://account.sendinblue.com/advanced/api
+    :password       => ENV['send_in_blue_password'], #See: https://account.sendinblue.com/advanced/api
     :enable_starttls_auto => true
   }
 end
