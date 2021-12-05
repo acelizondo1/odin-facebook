@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     def index
         @post_friend = true
         @post = Post.new
-        @posts = Post.joins('INNER JOIN "friendships" ON "friendships"."user_id" = "posts"."user_id"').includes(:user).distinct.where("posts.user_id = ? OR friendships.friend_id = ?", current_user.id, current_user.id).order(updated_at: :desc).limit(10)
+        @posts = Post.joins('LEFT JOIN "friendships" ON "friendships"."user_id" = "posts"."user_id"').includes(:user).distinct.where("posts.user_id = ? OR friendships.friend_id = ?", current_user.id, current_user.id).order(updated_at: :desc).limit(10)
     end
 
     def user
