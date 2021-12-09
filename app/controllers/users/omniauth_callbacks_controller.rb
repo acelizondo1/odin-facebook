@@ -11,7 +11,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             session["devise.facebook_data"] = request.env["omniauth.auth"].except(:extra) # Removing extra as it can overflow some session stores
             
             puts "!!!!!!"
-            puts @user.errors
+            @user.errors.each do |error|
+                puts error.message
+            end
 
             redirect_to new_user_registration_url
         end
