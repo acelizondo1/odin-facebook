@@ -27,7 +27,7 @@ end
 
 user = User.create({
     name: Faker::Name.name,
-    email: "test-email@odinfacebook.com"
+    email: 'test-email@odinfacebook.com',
     password: '123456'
 })
 
