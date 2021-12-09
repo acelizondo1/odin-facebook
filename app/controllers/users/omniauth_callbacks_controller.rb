@@ -12,7 +12,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             
             puts "!!!!!!"
             @user.errors.each do |error|
-                puts error.message
+                puts error.full_message
             end
 
             redirect_to new_user_registration_url
