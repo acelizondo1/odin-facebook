@@ -8,13 +8,13 @@
 
 require 'faker'
 
-30.times do |i|
-    # name = Faker::Name.name
-    # User.create({
-    #     name: name,
-    #     email: Faker::Internet.email(name:name),
-    #     password: '123456'
-    # })
+10.times do |i|
+    name = Faker::Name.name
+    User.create({
+        name: name,
+        email: Faker::Internet.email(name:name),
+        password: '123456'
+    })
     3.times do
         post_body = Faker::Quote.most_interesting_man_in_the_world
         Post.create({
@@ -23,4 +23,15 @@ require 'faker'
             updated_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
         })
     end
+end
+
+user = User.create({
+    name: Faker::Name.name,
+    email: "test-email@odinfacebook.com"
+    password: '123456'
+})
+
+5.times do |f|
+    friend = User.find(f+1)
+    Friendship.create(user: user, friend: friend)
 end
