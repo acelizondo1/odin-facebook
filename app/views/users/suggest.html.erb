@@ -12,7 +12,7 @@
                 <% end %>
             </figure>
             <p class="column is-9 is-align-items-center">
-                <span class="is-size-6 mr-1"><%= link_to user.name, user %></span>
+                <span class="is-size-6 mr-1"><%= link_to user.name, user %></span><br />
                 <%= link_to friend_requests_path(user_id: current_user.id, friend_id: user.id), method: :post, class: 'button is-small' do %>
                     <span>Add Friend</span>
                     <span class="icon">

@@ -8,30 +8,36 @@
 
 require 'faker'
 
-10.times do |i|
+users = []
+15.times do |i|
     name = Faker::Name.name
-    User.create({
+    response = Net::HTTP.get_response(URI.parse(Faker::Avatar.image))
+    response = Net::HTTP.get_response(URI.parse(response['location'])) if response.code == "302"
+    file = StringIO.new(response.body)
+    user = User.create!({
         name: name,
         email: Faker::Internet.email(name:name),
         password: '123456'
     })
+    user.avatar.attach(io: file, filename: "user_avatar_#{user.id}.jpg", content_type: "image/jpg")
+    
     3.times do
         post_body = Faker::Quote.most_interesting_man_in_the_world
-        Post.create({
-            user_id: i,
+        Post.create!({
+            user_id: user.id,
             body: post_body,
             updated_at: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now)
         })
     end
+    users << user
 end
 
-user = User.create({
+user = User.create!({
     name: Faker::Name.name,
     email: 'test-email@odinfacebook.com',
     password: '123456'
 })
-
-5.times do |f|
-    friend = User.find(f+1)
-    Friendship.create(user: user, friend: friend)
+friends = users.first(5)
+friends.each do |friend|
+    Friendship.create!(user: user, friend: friend)
 end
